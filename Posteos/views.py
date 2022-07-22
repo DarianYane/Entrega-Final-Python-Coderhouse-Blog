@@ -9,7 +9,7 @@ def home(request):
 
 def test(request):
     #posteos = Entrada.objects.all()
-    return render(request, "test.html") #{'posteos': posteos}
+    return render(request, "navbar.html") #{'posteos': posteos}
 
 def crearPost(request):
     form = EntradaForm()

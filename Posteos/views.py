@@ -7,6 +7,10 @@ def home(request):
     posteos = Entrada.objects.all()
     return render(request, "bienvenida.html", {'posteos': posteos})
 
+def test(request):
+    #posteos = Entrada.objects.all()
+    return render(request, "test.html") #{'posteos': posteos}
+
 def crearPost(request):
     form = EntradaForm()
     

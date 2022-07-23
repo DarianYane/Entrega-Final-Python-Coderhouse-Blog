@@ -16,12 +16,10 @@
                         <a class="nav-link" href="{% url 'crearPost' %}">Crear nueva entrada</a>
                         <a class="nav-link" href="#">Pricing</a>
                         <a class="nav-link disabled">Disabled</a>
-                        <!-- 
-                                Como poner los links
-                                
-                                href="{% url 'crearPost' %}"
-        
-                             -->
+                        <form class="d-flex" role="search" style="width: 25vw; margin-left: 20px;">
+                            <input class="form-control me-2" type="search" placeholder="Escriba su búsqueda aquí" aria-label="Search">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                        </form>
                     </div>
                 </div>
             </div>

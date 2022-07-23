@@ -16,8 +16,10 @@
                         <a class="nav-link" href="{% url 'crearPost' %}">Crear nueva entrada</a>
                         <a class="nav-link" href="#">Pricing</a>
                         <a class="nav-link disabled">Disabled</a>
-                        <form class="d-flex" role="search" style="width: 25vw; margin-left: 20px;">
-                            <input class="form-control me-2" type="search" placeholder="Escriba su búsqueda aquí" aria-label="Search">
+
+                        <!--{{ formulario_busqueda }}-->
+                        <form class="d-flex" style="width: 25vw; margin-left: 20px;" action="/buscar/" method="GET">
+                            <input class="form-control me-2" type="text" placeholder="Escriba su búsqueda aquí" name="titulo">
                             <button class="btn btn-primary" type="submit">Buscar</button>
                         </form>
                     </div>

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>Estamos buscando: {{titulo}}</p>
+
+
+{% if entradas %}
+    <div>
+        Las coincidencias fueron las siguientes:
+    </div>
+
+    <ul>
+        {% for entrada in entradas %}
+        <li>
+            {{entrada.titulo}}
+        </li>
+        {% endfor %}
+    </ul>
+
+{% else %}
+
+    <div>
+        No se encontraron coincidencias
+    </div>
+
+
+{% endif %}
+
+    <div>
+        {{respuesta}}
+    </div>
+
+
+
+{% endblock %}

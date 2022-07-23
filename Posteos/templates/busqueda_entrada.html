@@ -13,14 +13,19 @@
 
     {% if entradas %}
         <div>
-            Las coincidencias fueron las siguientes:
+            Las entradas econtradas fueron las siguientes:
+            
         </div>
-
+        <br>
         <ul>
             {% for entrada in entradas %}
             <li>
-                {{entrada.titulo}}
+                <h3>{{entrada.titulo}}</h3>
+                <a href="edicionEntrada/{{entrada.id}}" class="btn btn-sm btn-block btn-info">Editar</a>
+                <a href="/eliminarEntrada/{{entrada.id}}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                
             </li>
+            <br>
             {% endfor %}
         </ul>
 

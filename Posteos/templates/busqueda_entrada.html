@@ -2,35 +2,37 @@
 
 {% block content %}
 
-<p>Estamos buscando: {{titulo}}</p>
+<p>Resultados para: {{titulo}}</p>
 
-
-{% if entradas %}
-    <div>
-        Las coincidencias fueron las siguientes:
-    </div>
-
-    <ul>
-        {% for entrada in entradas %}
-        <li>
-            {{entrada.titulo}}
-        </li>
-        {% endfor %}
-    </ul>
+{% if titulo == "(No realizó búsqueda)" %}
+    Para realizar una búsqueda debe ingresar algún dato.
+    Por favor, inténtelo nuevamente.
 
 {% else %}
 
-    <div>
-        No se encontraron coincidencias
-    </div>
 
+    {% if entradas %}
+        <div>
+            Las coincidencias fueron las siguientes:
+        </div>
+
+        <ul>
+            {% for entrada in entradas %}
+            <li>
+                {{entrada.titulo}}
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+
+        <div>
+            No se encontraron coincidencias
+        </div>
+
+
+    {% endif %}
 
 {% endif %}
-
-    <div>
-        {{respuesta}}
-    </div>
-
-
 
 {% endblock %}

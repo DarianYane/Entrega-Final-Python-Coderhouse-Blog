@@ -34,14 +34,16 @@ def buscar(request):
     if request.GET["titulo"]:
         queryset = request.GET["titulo"]       
         entradas = Entrada.objects.filter(titulo__icontains=queryset).all()
+        print(queryset)
+        print(entradas)
 
         if entradas!=[]:
             return render(request, "busqueda_entrada.html", {"entradas": entradas, "titulo": queryset})
-        else:
-            return redirect('bienvenida')
+
+
     else:
-        respuesta = "Ha habido un error. Intente nuevamente."
-        return render(request, "busqueda_entrada.html", {"respuesta": respuesta})
+        queryset = "(No realizó búsqueda)"
+        return render(request, "busqueda_entrada.html", {"titulo": queryset})
     
     
     

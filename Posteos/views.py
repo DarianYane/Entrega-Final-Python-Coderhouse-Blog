@@ -9,7 +9,7 @@ from django.http import HttpResponse
 #Eliminar este de testeos antes de entregar el trabajo
 def test(request):
     #posteos = Entrada.objects.all()
-    return render(request, "navbar.html") #{'posteos': posteos}
+    return render(request, "test.html") #{'posteos': posteos}
 
 
 
@@ -34,8 +34,8 @@ def buscar(request):
     if request.GET["titulo"]:
         queryset = request.GET["titulo"]       
         entradas = Entrada.objects.filter(titulo__icontains=queryset).all()
-        print(queryset)
-        print(entradas)
+        #print(queryset)
+        #print(entradas)
 
         if entradas!=[]:
             return render(request, "busqueda_entrada.html", {"entradas": entradas, "titulo": queryset})
@@ -46,4 +46,10 @@ def buscar(request):
         return render(request, "busqueda_entrada.html", {"titulo": queryset})
     
     
-    
+def eliminarEntrada (request, Entrada_titulo):
+    posteo = Entrada.objects.get(titulo=Entrada_titulo)
+    posteo.delete()
+
+    #vuelvo al menú
+    posteos = Entrada.objects.all()
+    return render(request, "bienvenida.html", {'posteos': posteos})

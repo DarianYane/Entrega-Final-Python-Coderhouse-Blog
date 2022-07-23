@@ -46,10 +46,10 @@ def buscar(request):
         return render(request, "busqueda_entrada.html", {"titulo": queryset})
     
     
-def eliminarEntrada (request, Entrada_titulo):
-    posteo = Entrada.objects.get(titulo=Entrada_titulo)
-    posteo.delete()
+def eliminarPost(request,id):
+    post = Entrada.objects.get(id=id)
+    #print(post)
+    post.delete()
 
-    #vuelvo al menú
-    posteos = Entrada.objects.all()
-    return render(request, "bienvenida.html", {'posteos': posteos})
+    #redirecciono a la ruta raiz
+    return redirect('/')

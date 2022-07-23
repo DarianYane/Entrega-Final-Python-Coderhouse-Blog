@@ -37,7 +37,8 @@ def buscar(request):
 
         if entradas!=[]:
             return render(request, "busqueda_entrada.html", {"entradas": entradas, "titulo": queryset})
-
+        else:
+            return redirect('bienvenida')
     else:
         respuesta = "Ha habido un error. Intente nuevamente."
         return render(request, "busqueda_entrada.html", {"respuesta": respuesta})

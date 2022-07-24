@@ -21,7 +21,7 @@
             {% for entrada in entradas %}
             <li>
                 <h3>{{entrada.titulo}}</h3>
-                <a href="edicionEntrada/{{entrada.id}}" class="btn btn-sm btn-block btn-info">Editar</a>
+                <a href="/editarEntrada/{{entrada.id}}" class="btn btn-sm btn-block btn-info">Editar</a>
                 <a href="/eliminarEntrada/{{entrada.id}}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
                 
             </li>

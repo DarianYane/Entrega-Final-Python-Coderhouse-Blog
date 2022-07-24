@@ -1,8 +1,14 @@
+from msilib.schema import ListView
+from typing import List
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from Posteos.models import Entrada
 from Posteos.forms import EntradaForm, BusquedaEntrada
 from django.http import HttpResponse
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -53,3 +59,31 @@ def eliminarPost(request,id):
 
     #redirecciono a la ruta raiz
     return redirect('/')
+
+# Clases basadas en vistas
+class EntradaList(ListView):
+
+    model = Entrada
+    template_name: "bienvenida.html"
+
+class EntradaDetalle(DetailView):
+
+    model = Entrada
+    template_name: "detalle_entrada.html"
+
+class EntradaCreacion(CreateView):
+
+    model = Entrada
+    succes_url = "bienvenida.html"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
+
+class EntradaUpdate(UpdateView):
+
+    model = Entrada
+    succes_url = "bienvenida.html"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
+
+class EntradaDelete(DeleteView):
+
+    model = Entrada
+    succes_url = "bienvenida.html"

@@ -62,34 +62,6 @@ def eliminarPost(request,id):
     #redirecciono a la ruta raiz
     return redirect('/')
 
-# Clases basadas en vistas
-class EntradaList(ListView):
-
-    model = Entrada
-    template_name: "bienvenida.html"
-
-class EntradaDetalle(DetailView):
-
-    model = Entrada
-    template_name: "detalle_entrada.html"
-
-class EntradaCreacion(CreateView):
-
-    model = Entrada
-    succes_url = "bienvenida.html"
-    fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
-
-class EntradaUpdate(UpdateView):
-
-    model = Entrada
-    succes_url = "bienvenida.html"
-    fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
-
-class EntradaDelete(DeleteView):
-
-    model = Entrada
-    succes_url = "bienvenida.html"
-    
 def editarPost(request,id):
     print(id)
     if request.method == 'GET':
@@ -144,3 +116,33 @@ def editarPost(request,id):
     context ={'form': form}
     return render(request, "crearpost.html", context)
     """
+
+
+# Clases basadas en vistas
+class EntradaList(ListView):
+
+    model = Entrada
+    template_name: "bienvenida.html"
+
+class EntradaDetalle(DetailView):
+
+    model = Entrada
+    template_name: "detalle_entrada.html"
+
+class EntradaCreacion(CreateView):
+
+    model = Entrada
+    succes_url = "bienvenida.html"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
+
+class EntradaUpdate(UpdateView):
+
+    model = Entrada
+    succes_url = "bienvenida.html"
+    fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
+
+class EntradaDelete(DeleteView):
+
+    model = Entrada
+    succes_url = "bienvenida.html"
+    

@@ -2,6 +2,7 @@ from msilib.schema import ListView
 from typing import List
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
+from matplotlib.style import context
 from Posteos.models import Entrada
 from Posteos.forms import EntradaForm, BusquedaEntrada
 from django.http import HttpResponse
@@ -15,13 +16,9 @@ from django.urls import reverse_lazy
 #Eliminar este de testeos antes de entregar el trabajo
 def test(request):
     #posteos = Entrada.objects.all()
-    return render(request, "test.html") #{'posteos': posteos}
+    return render(request, "entrada_detail.html") #{'posteos': posteos}
 
 
-
-def home(request):
-    posteos = Entrada.objects.all()
-    return render(request, "bienvenida.html", {'posteos': posteos})
 
 def crearPost(request):
     form = EntradaForm()
@@ -62,6 +59,11 @@ def eliminarPost(request,id):
     #redirecciono a la ruta raiz
     return redirect('/')
 
+def verPost(request,id):
+    post = get_object_or_404(Entrada, id=id)
+    return render(request, "entrada_detail.html", {"post": post})
+
+# No funciona!!!!
 def editarPost(request,id):
     print(id)
     if request.method == 'GET':
@@ -119,22 +121,32 @@ def editarPost(request,id):
 
 
 # Clases basadas en vistas
-class EntradaList(ListView):
 
-    model = Entrada
-    template_name: "bienvenida.html"
-
+# No funciona!!!!!
 class EntradaDetalle(DetailView):
 
     model = Entrada
-    template_name: "detalle_entrada.html"
+    context_object_name = "post"
+    template_name: "entrada_detail.html" 
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['entrada'] = Entrada.objects.order_by('creado').first()
+        return context
+        #return super().get_context_data(**kwargs)
+
+    #template_name: "detalle_entrada.html"
+
+# No funciona!!!!
 class EntradaCreacion(CreateView):
 
     model = Entrada
-    succes_url = "bienvenida.html"
+    template_name = "crearpost.html"
     fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
+    succes_url = reverse_lazy("bienvenida")
 
+
+# No funciona!!!!
 class EntradaUpdate(UpdateView):
 
     model = Entrada
@@ -145,4 +157,9 @@ class EntradaDelete(DeleteView):
 
     model = Entrada
     succes_url = "bienvenida.html"
-    
+
+# Funciona
+class BienvenidaView(ListView):
+    queryset = Entrada.objects.all()
+    context_object_name = "posteos"
+    template_name = "bienvenida.html"

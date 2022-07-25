@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+    
+        <section class="py-5  container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 cmx-auto">
+                    <h1 class="fw-light">{{ post.titulo }}</h1>
+                    <p class="lead text-muted">{{ post.subtitulo }}</p>
+                    <div style="padding-top: 2em;">
+                        {{ post.cuerpo }}
+                    </div>
+                </div>           
+            </div>
+        </section>
+        <main class="flex-shrink-0">
+            <div class="container">
+                <div style="text-align:center;">
+                    <img height="225" src="{{ post.imagen }}"/>
+                </div>
+            </div>
+        </main>
+        <section class="py-5  container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 cmx-auto">
+                    <h3 class="fw-light">Autor: {{ post.autor }}</h3>
+                    <p class="lead text-muted">Creado el día {{ post.creado }}</p>        
+                </div>       
+            </div>
+        </section>
+    {% endblock %}
+    

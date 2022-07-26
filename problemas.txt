@@ -12,3 +12,5 @@ class EntradaCreacion(CreateView):
 # No funciona!!!!
 class EntradaUpdate(UpdateView):
 
+...
+

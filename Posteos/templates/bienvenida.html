@@ -7,7 +7,7 @@
     <section>
         {% for posteo in posteos %}
             <article>
-                <h2>{{ posteo.titulo }}</h2>
+                <h2><a href="{% url 'verEntrada' posteo.id %}">{{ posteo.titulo }}</a></h2>
                 <h3>{{ posteo.subtitulo }}</h3>
                 <p>
                     {{ posteo.cuerpo }}

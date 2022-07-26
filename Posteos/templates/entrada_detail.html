@@ -28,11 +28,9 @@
                 </div>
 
             </div>
-
-                                        <a href="{% url 'verEntrada' post.id %}" class="btn btn-sm btn-block btn-primary">Ver en detalle</a>
-                                        <a href="{% url 'editarEntrada' post.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
-                                        <a href="{% url 'eliminarEntrada' post.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
-                                        <br>
+            <a href="{% url 'editarEntrada' post.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
+            <a href="{% url 'eliminarEntrada' post.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+            <br>
         </section>
 
     {% endblock %}

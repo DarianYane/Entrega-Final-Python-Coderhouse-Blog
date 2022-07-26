@@ -25,8 +25,15 @@
                 <div class="col-lg-6 col-md-8 cmx-auto">
                     <h3 class="fw-light">Autor: {{ post.autor }}</h3>
                     <p class="lead text-muted">Creado el día {{ post.creado }}</p>        
-                </div>       
+                </div>
+
             </div>
+
+                                        <a href="{% url 'verEntrada' post.id %}" class="btn btn-sm btn-block btn-primary">Ver en detalle</a>
+                                        <a href="{% url 'editarEntrada' post.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
+                                        <a href="{% url 'eliminarEntrada' post.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                                        <br>
         </section>
+
     {% endblock %}
     

@@ -1,5 +1,6 @@
 no me aplica el RichTextField() en el formulario, pero sí en el panel de administracion
 
+Editar entradas
 # Funciona, pero me duplica las entradas y no puedo resolver lo del id
 def editarPost(request,id):
 

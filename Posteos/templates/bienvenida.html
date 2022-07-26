@@ -18,10 +18,18 @@
                         Autor: {{ posteo.autor }}
                     </h3>
                     Fecha de creación: {{ posteo.creado }}
+                    <br>
+                    <br>
+                    <a href="{% url 'verEntrada' posteo.id %}" class="btn btn-sm btn-block btn-primary">Ver en detalle</a>
+                    <a href="{% url 'editarEntrada' posteo.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
+                    <a href="{% url 'eliminarEntrada' posteo.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                    <br>
                 </footer>
             </article>
-            <br>
+        <br>
+        <br>
         {% endfor %}
+        <br>
     </section>
 
 {% endblock %}

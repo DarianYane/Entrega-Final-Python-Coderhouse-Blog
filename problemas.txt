@@ -1,8 +1,6 @@
 no me aplica el RichTextField() en el formulario, pero sí en el panel de administracion
 
-aunque en la pagina principal me muestra una vez cada entrada, en el administrador, muchas aparecen duplicadas, triplicadas, etc
-
-# No funciona!!!!
+# Funciona, pero me duplica las entradas y no puedo resolver lo del id
 def editarPost(request,id):
 
 # No funciona!!!!!

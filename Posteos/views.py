@@ -2,9 +2,8 @@ from msilib.schema import ListView
 from typing import List
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from matplotlib.style import context
 from Posteos.models import Entrada
-from Posteos.forms import EntradaForm, BusquedaEntrada
+from Posteos.forms import EntradaForm
 from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -65,59 +64,48 @@ def verPost(request,id):
 
 # No funciona!!!!
 def editarPost(request,id):
-    print(id)
-    if request.method == 'GET':
-        post = get_object_or_404(Entrada, id=id)
-        print(post)
-        initial = {'titulo':Entrada.titulo, 'subtitulo':Entrada.subtitulo, 
-        'cuerpo':Entrada.cuerpo, 'imagen':Entrada.imagen, 'autor':Entrada.autor, 'creado':Entrada.creado}
-        print(initial)
-        form = EntradaForm(initial=initial)
-        print(form)
-        return render(request, "crearpost.html", {'form':form})
-
-
-    """
-    print(id)
-    post = Entrada.objects.get(id=id)
-    print(post)
     
-
     if request.method == 'POST':
         form = EntradaForm(request.POST)
         print(form)
-
+        
         if form.is_valid():
             
             informacion = form.cleaned_data
-            print(informacion)
+                    
+            #Entrada.id = informacion['id']
+            Entrada.titulo = informacion['titulo']
+            Entrada.subtitulo = informacion['subtitulo']
+            Entrada.cuerpo = informacion['cuerpo']
+            Entrada.imagen = informacion['imagen']
+            Entrada.autor = informacion['autor']
+            Entrada.creado = informacion['creado']
 
-        
-                Entrada.titulo = informacion['titulo']
-                Entrada.subtitulo = informacion['subtitulo']
-                Entrada.cuerpo = informacion['cuerpo']
-                Entrada.imagen = informacion['imagen']
-                Entrada.autor = informacion['autor']
-                Entrada.creado = informacion['creado']
 
-
-                form.save()
-                return redirect('bienvenida')
+            form.save()
+            return redirect('bienvenida')
 
         context ={'form': form}
         return render(request, "crearpost.html", context)
         
     else:
         # Creo el formulario con los datos a modificar
-        form = EntradaForm(initial={'titulo':Entrada.titulo, 'subtitulo':Entrada.subtitulo, 
-        'cuerpo':Entrada.cuerpo, 'imagen':Entrada.imagen, 'autor':Entrada.autor, 'creado':Entrada.creado})
-        print(form)
-        print(1)
+        print(id)
+        if request.method == 'GET':
+            post = get_object_or_404(Entrada, id=id)
+            print(post)
+            initial = {'id': post.id, 'titulo':post.titulo, 'subtitulo':post.subtitulo, 
+            'cuerpo':post.cuerpo, 'imagen':post.imagen, 'autor':post.autor} 
+            print(initial)
+            form = EntradaForm(initial=initial)
+            #print(form)
+            return render(request, "crearpost.html", {'form':form})
+ 
         
     #redirecciono a la r
     context ={'form': form}
     return render(request, "crearpost.html", context)
-    """
+    
 
 
 # Clases basadas en vistas

@@ -1,11 +1,9 @@
+Problemas:
 no me aplica el RichTextField() en el formulario, pero sí en el panel de administracion
 
-Editar entradas
+Editar entradas (update)
 # Funciona, pero me duplica las entradas y no puedo resolver lo del id
 def editarPost(request,id):
-
-# No funciona!!!!!
-class EntradaDetalle(DetailView):
 
 # No funciona!!!!
 class EntradaCreacion(CreateView):
@@ -13,5 +11,11 @@ class EntradaCreacion(CreateView):
 # No funciona!!!!
 class EntradaUpdate(UpdateView):
 
-...
+
+Pendientes:
+cambiar la forma de cargar entradas
+
+
+Al final:
+sacar la view TEST
 

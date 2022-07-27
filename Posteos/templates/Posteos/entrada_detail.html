@@ -27,7 +27,7 @@
             <p class="lead text-muted">Creado el día {{ post.creado }}</p>
         </div>
     </div>
-    <a href="{% url 'editarEntrada' post.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
+    <a href="{% url 'entrada-update' post.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
     <a href="{% url 'eliminarEntrada' post.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
     <br>
 </section>

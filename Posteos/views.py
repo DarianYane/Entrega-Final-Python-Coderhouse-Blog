@@ -93,7 +93,6 @@ class BienvenidaView(ListView):
 
 # Funciona
 class EntradaDetailView(DetailView):
-
     model = Entrada
     context_object_name = "post"
     
@@ -109,33 +108,26 @@ class EntradaCreateView(CreateView):
     template_name = "Posteos/entrada_form.html"
     success_url = reverse_lazy("bienvenida")
 
-
-
-# No funciona!!!!
-class EntradaUpdate(UpdateView):
-
+# Funciona
+class EntradaUpdateView(UpdateView):
     model = Entrada
-    succes_url = "bienvenida.html"
     fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
+    success_url = reverse_lazy('bienvenida')
 
-#no probé
+
+
+
+# no lo probé
 class EntradaDelete(DeleteView):
 
     model = Entrada
     succes_url = "bienvenida.html"
 
+
+
 #Clases del profesor
-
-
-
-
-"""
-class ArticleUpdateView(BaseView, UpdateView):
-    model = Entrada
-    fields = ['title', 'short_content', 'content', 'author', 'image', 'is_headline', 'image', 'date_published']
-    success_url = reverse_lazy('panel-page')
     
-
+"""
 class ArticleDeleteView(BaseView, DeleteView):
     model = Entrada
     success_url = reverse_lazy('panel-page')

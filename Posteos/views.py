@@ -14,21 +14,6 @@ def test(request):
 
 
 
-def crearPost(request):
-    form = EntradaForm()
-    
-    if request.method == 'POST':
-        form = EntradaForm(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('bienvenida')
-
-    context ={'form': form}
-    return render(request, "crearpost.html", context)
-
-
-
 def buscar(request):
     if request.GET["titulo"]:
         queryset = request.GET["titulo"]       
@@ -117,15 +102,14 @@ class EntradaDetailView(DetailView):
         #context['portal'] = Portal.objects.order_by('date_updated').first()
         return context
 
-
-
-# No funciona!!!!
-class EntradaCreacion(CreateView):
-
+# Funciona
+class EntradaCreateView(CreateView):
     model = Entrada
-    template_name = "crearpost.html"
     fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
-    succes_url = reverse_lazy("bienvenida")
+    template_name = "Posteos/entrada_form.html"
+    success_url = reverse_lazy("bienvenida")
+
+
 
 # No funciona!!!!
 class EntradaUpdate(UpdateView):
@@ -141,19 +125,18 @@ class EntradaDelete(DeleteView):
     succes_url = "bienvenida.html"
 
 #Clases del profesor
-class ArticleCreateView(LoginRequiredMixin, CreateView):
-    model = Article
-    fields = ['short_content','title' , 'content', 'author', 'image', 'is_headline', 'image', 'date_published']
-    template_name = "news_portal/article_form.html"
-    success_url = reverse_lazy("panel-page")
 
 
-class ArticleUpdateView(LoginRequiredMixin, BaseView, UpdateView):
-    model = Article
+
+
+"""
+class ArticleUpdateView(BaseView, UpdateView):
+    model = Entrada
     fields = ['title', 'short_content', 'content', 'author', 'image', 'is_headline', 'image', 'date_published']
     success_url = reverse_lazy('panel-page')
     
 
-class ArticleDeleteView(LoginRequiredMixin, BaseView, DeleteView):
-    model = Article
+class ArticleDeleteView(BaseView, DeleteView):
+    model = Entrada
     success_url = reverse_lazy('panel-page')
+"""

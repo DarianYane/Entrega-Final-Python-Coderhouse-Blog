@@ -19,7 +19,7 @@
 
         <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
             {{ form.as_p }}
-            {% if request.resolver_match.url_name == "article-update" %}
+            {% if request.resolver_match.url_name == "entrada-update" %}
             <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
             {% else %}
             <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">

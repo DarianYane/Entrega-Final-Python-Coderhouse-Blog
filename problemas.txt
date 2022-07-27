@@ -1,12 +1,9 @@
 Problemas:
 no me aplica el RichTextField() en el formulario, pero sí en el panel de administracion
+    Solucion
+    Agregar lo del ckeditor en static
 
-Editar entradas (update)
-# Funciona, pero me duplica las entradas y no puedo resolver lo del id
-def editarPost(request,id):
 
-# No funciona!!!!
-class EntradaUpdate(UpdateView):
 
 
 Pendientes:

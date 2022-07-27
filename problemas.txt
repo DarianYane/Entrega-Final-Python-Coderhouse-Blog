@@ -6,14 +6,12 @@ Editar entradas (update)
 def editarPost(request,id):
 
 # No funciona!!!!
-class EntradaCreacion(CreateView):
-
-# No funciona!!!!
 class EntradaUpdate(UpdateView):
 
 
 Pendientes:
 cambiar la forma de cargar entradas
+probar delete view
 
 
 Al final:

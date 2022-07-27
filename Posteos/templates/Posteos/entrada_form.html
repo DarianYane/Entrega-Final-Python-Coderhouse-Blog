@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block extrahead %}
+<!-- Falta instalar ckeditor
+    https://www.google.com/search?q=como+poner+ckeditor+en+stativ&oq=como+poner+ckeditor+en+stativ&aqs=chrome..69i57j33i160l3.5509j0j7&sourceid=chrome&ie=UTF-8
+
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+-->
+{% endblock %}
+
+
+
+{% block content %}
+
+<main class="flex-shrink-0">
+    <div class="container">
+
+        <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
+            {{ form.as_p }}
+            {% if request.resolver_match.url_name == "article-update" %}
+            <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
+            {% else %}
+            <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">
+            {% endif %}
+        </form>
+
+    </div>
+    <a class="offset-md-1" type="button" href="{% url 'bienvenida' %}" style="margin-top: 2em;" class="btn btn-sm btn-outline-primary">Volver al
+                inicio</a>
+</main>
+{% endblock %}

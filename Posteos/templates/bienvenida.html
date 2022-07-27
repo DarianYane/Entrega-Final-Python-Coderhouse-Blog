@@ -2,23 +2,27 @@
 
 {% block content %}
 
-    <h1 class="centrado">Bienvenidos al Blog de Emanuel y Darian para el curso de Python en CODERHOUSE</h1>
+    <h1 class="centrado">Bienvenidos al Blog de Emanuel y Darian</h1>
+    <h2 class="centrado">para el curso de Python en CODERHOUSE</h2>
     <br>
-    <section>
+    <section class="offset-md-1">
         {% for posteo in posteos %}
             <article>
                 <h2><a href="{% url 'entrada-detail' posteo.id %}">{{ posteo.titulo }}</a></h2>
-                <h3>{{ posteo.subtitulo }}</h3>
+                <h4>>> {{ posteo.subtitulo }}</h4>
                 <!--   Oculto el detalle para que se vea en la entrada individual
                 <p>
                     {{ posteo.cuerpo }}
                 </p>
                 -->
+                <br>
                 <img src="{{ posteo.imagen }}" alt="">
+                
                 <footer>
-                    <h3>
+                    <br>
+                    <h5>
                         Autor: {{ posteo.autor }}
-                    </h3>
+                    </h5>
                     Fecha de creación: {{ posteo.creado }}
                     <br>
                     <br>

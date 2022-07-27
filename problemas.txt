@@ -10,6 +10,8 @@ Pendientes:
 cambiar la forma de cargar imagenes
 probar delete view
 
+agregar un boton de leer entrada antes de la imagen en la pagina de bienvenida
+
 
 Al final:
 sacar la view TEST

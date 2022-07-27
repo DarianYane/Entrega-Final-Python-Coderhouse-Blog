@@ -37,51 +37,9 @@ def eliminarPost(request,id):
 
 
 
-# No funciona!!!!
-def editarPost(request,id):
-    
-    if request.method == 'POST':
-        form = EntradaForm(request.POST)
-        print(form)
-        
-        if form.is_valid():
-            
-            informacion = form.cleaned_data
-                    
-            #Entrada.id = informacion['id']
-            Entrada.titulo = informacion['titulo']
-            Entrada.subtitulo = informacion['subtitulo']
-            Entrada.cuerpo = informacion['cuerpo']
-            Entrada.imagen = informacion['imagen']
-            Entrada.autor = informacion['autor']
-            Entrada.creado = informacion['creado']
-
-            form.save()
-            return redirect('bienvenida')
-
-        context ={'form': form}
-        return render(request, "crearpost.html", context)
-        
-    else:
-        # Creo el formulario con los datos a modificar
-        print(id)
-        if request.method == 'GET':
-            post = get_object_or_404(Entrada, id=id)
-            print(post)
-            initial = {'id': post.id, 'titulo':post.titulo, 'subtitulo':post.subtitulo, 
-            'cuerpo':post.cuerpo, 'imagen':post.imagen, 'autor':post.autor} 
-            print(initial)
-            form = EntradaForm(initial=initial)
-            #print(form)
-            return render(request, "crearpost.html", {'form':form})
- 
-        
-    #redirecciono a la r
-    context ={'form': form}
-    return render(request, "crearpost.html", context)
     
 
-                #CBV
+#CBV
 
 # Funciona
 class BienvenidaView(ListView):

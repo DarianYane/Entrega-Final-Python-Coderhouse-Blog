@@ -7,7 +7,7 @@ no me aplica el RichTextField() en el formulario, pero sí en el panel de admini
 
 
 Pendientes:
-cambiar la forma de cargar entradas
+cambiar la forma de cargar imagenes
 probar delete view
 
 

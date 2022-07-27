@@ -1,16 +1,12 @@
 Problemas:
 no me aplica el RichTextField() en el formulario, pero sí en el panel de administracion
     Solucion
-    Agregar lo del ckeditor en static
+    Agregar lo del ckeditor en static???
 
 
 
 
 Pendientes:
-cambiar la forma de cargar imagenes
-probar delete view
-
-agregar un boton de leer entrada antes de la imagen en la pagina de bienvenida
 
 
 Al final:

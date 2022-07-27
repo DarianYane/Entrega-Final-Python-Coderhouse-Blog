@@ -7,7 +7,7 @@
     <br>
     <section class="offset-md-1">
         {% for posteo in posteos %}
-            <article>
+            <article style="margin-top: 3em">
                 <h2><a href="{% url 'entrada-detail' posteo.id %}">{{ posteo.titulo }}</a></h2>
                 <h4>>> {{ posteo.subtitulo }}</h4>
                 <!--   Oculto el detalle para que se vea en la entrada individual
@@ -16,12 +16,12 @@
                 </p>
                 -->
                 <p>
-                <a href="{% url 'entrada-detail' posteo.id %}" class="btn btn-sm btn-block btn-primary">Leer entrada completa</a>
+                    <a href="{% url 'entrada-detail' posteo.id %}" class="btn btn-sm btn-block btn-primary">Leer entrada completa</a>
                 </p>
                 
                 </div>
                 
-                <img src="{{ posteo.imagen }}" alt="">
+                    <img src="{{ posteo.imagen }}" alt="">
                 
                 <footer>
                     <br>
@@ -33,7 +33,7 @@
                     <br>
                     
                     <a href="{% url 'entrada-update' posteo.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
-                    <a href="{% url 'eliminarEntrada' posteo.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                    <a href="{% url 'entrada-delete' posteo.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
                     <br>
                 </footer>
             </article>

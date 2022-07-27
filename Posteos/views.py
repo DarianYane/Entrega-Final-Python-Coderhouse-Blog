@@ -1,16 +1,11 @@
-from msilib.schema import ListView
-from typing import List
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from Posteos.models import Entrada
 from Posteos.forms import EntradaForm
-from django.http import HttpResponse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 
-# Create your views here.
 
 #Eliminar este de testeos antes de entregar el trabajo
 def test(request):
@@ -24,6 +19,7 @@ def crearPost(request):
     
     if request.method == 'POST':
         form = EntradaForm(request.POST)
+
         if form.is_valid():
             form.save()
             return redirect('bienvenida')
@@ -32,35 +28,29 @@ def crearPost(request):
     return render(request, "crearpost.html", context)
 
 
+
 def buscar(request):
     if request.GET["titulo"]:
         queryset = request.GET["titulo"]       
         entradas = Entrada.objects.filter(titulo__icontains=queryset).all()
-        #print(queryset)
-        #print(entradas)
 
         if entradas!=[]:
             return render(request, "busqueda_entrada.html", {"entradas": entradas, "titulo": queryset})
-
 
     else:
         queryset = "(No realizó búsqueda)"
         return render(request, "busqueda_entrada.html", {"titulo": queryset})
     
     
+
 def eliminarPost(request,id):
     post = get_object_or_404(Entrada, id=id)
-    #print(post)
-
-    #eliminamos el registro
     post.delete()
 
     #redirecciono a la ruta raiz
     return redirect('/')
 
-def verPost(request,id):
-    post = get_object_or_404(Entrada, id=id)
-    return render(request, "entrada_detail.html", {"post": post})
+
 
 # No funciona!!!!
 def editarPost(request,id):
@@ -80,7 +70,6 @@ def editarPost(request,id):
             Entrada.imagen = informacion['imagen']
             Entrada.autor = informacion['autor']
             Entrada.creado = informacion['creado']
-
 
             form.save()
             return redirect('bienvenida')
@@ -107,23 +96,28 @@ def editarPost(request,id):
     return render(request, "crearpost.html", context)
     
 
+                #CBV
 
-# Clases basadas en vistas
+# Funciona
+class BienvenidaView(ListView):
+    queryset = Entrada.objects.all()
+    context_object_name = "posteos"
+    template_name = "bienvenida.html"
 
-# No funciona!!!!!
-class EntradaDetalle(DetailView):
+
+
+# Funciona
+class EntradaDetailView(DetailView):
 
     model = Entrada
     context_object_name = "post"
-    template_name: "entrada_detail.html" 
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['entrada'] = Entrada.objects.order_by('creado').first()
+        #context['portal'] = Portal.objects.order_by('date_updated').first()
         return context
-        #return super().get_context_data(**kwargs)
 
-    #template_name: "detalle_entrada.html"
+
 
 # No funciona!!!!
 class EntradaCreacion(CreateView):
@@ -133,7 +127,6 @@ class EntradaCreacion(CreateView):
     fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
     succes_url = reverse_lazy("bienvenida")
 
-
 # No funciona!!!!
 class EntradaUpdate(UpdateView):
 
@@ -141,13 +134,9 @@ class EntradaUpdate(UpdateView):
     succes_url = "bienvenida.html"
     fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
 
+#no probé
 class EntradaDelete(DeleteView):
 
     model = Entrada
     succes_url = "bienvenida.html"
 
-# Funciona
-class BienvenidaView(ListView):
-    queryset = Entrada.objects.all()
-    context_object_name = "posteos"
-    template_name = "bienvenida.html"

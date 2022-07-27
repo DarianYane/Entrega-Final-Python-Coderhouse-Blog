@@ -2,7 +2,7 @@ from django.urls import path
 from Posteos import views
 
 #importar clase del profesor
-from .views import EntradaDetailView
+from .views import EntradaDetailView, EntradaCreateView
 
 urlpatterns = [
     path('', views.BienvenidaView.as_view(), name='bienvenida'), # ListView
@@ -24,6 +24,13 @@ urlpatterns = [
 
 
     path('test/', views.test, name='test'),
+
+
+#Path del profesor sin probar
+    path('crearpost/2', EntradaCreateView.as_view(), name ="entrada-create" ),
+    
+    path('article/<pk>/update', ArticleUpdateView.as_view(), name ="article-update" ),
+    path('article/<pk>/delete', ArticleDeleteView.as_view(), name ="article-delete" ),
     
 
 ]

@@ -3,29 +3,36 @@
 
     <body>
         <!-- Navbar -->
-        <nav class="navbar navbar-dark navbar-expand-lg bg-success">
+        <nav class="navbar navbar-dark navbar-expand-lg bg-success p-3 ">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'bienvenida' %}">BlogED</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="{% url 'bienvenida' %}">Home</a>
-                        <a class="nav-link" href="{% url 'entrada-create' %}">Crear nueva entrada</a>
-                        <a class="nav-link" href="#">Pricing</a>
-                        <a class="nav-link disabled">Disabled</a>
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"></div>
+                    <a class="navbar-brand" href="{% url 'bienvenida' %}">BlogED</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active" aria-current="page" href="{% url 'bienvenida' %}">Home</a>
+                            <a class="nav-link" href="{% url 'entrada-create' %}">Crear nueva entrada</a>
+                            <a class="nav-link" href="#">Pricing</a>
+                            <a class="nav-link disabled">Disabled</a>
 
-                        <!--{{ formulario_busqueda }}-->
-                        <form class="d-flex" style="width: 25vw; margin-left: 20px;" action="/buscar/" method="GET">
-                            <input class="form-control me-2" type="text" placeholder="Busque por título..." name="titulo">
-                            <button class="btn btn-primary" type="submit">Buscar</button>
-                        </form>
+                            <!--{{ formulario_busqueda }}-->
+                            <form class="d-flex" style="width: 25vw; margin-left: 20px;" action="/buscar/" method="GET">
+                                <input class="form-control me-2" type="text" placeholder="Busque por título..." name="titulo">
+                                <button class="btn btn-primary" type="submit">Buscar</button>
+                            </form>
+                            
+                        </div>
                     </div>
+                                        <div class="text-end">
+                                            <button type="button" class="btn btn-info me-2">Login</button>
+                                            <button type="button" class="btn btn-warning">Registrarse</button>
+                                        </div>
                 </div>
             </div>
         </nav>
         <!-- EndNavbar -->
-    </body>
+        </body>
 </html>

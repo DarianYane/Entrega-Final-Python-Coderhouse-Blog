@@ -15,6 +15,8 @@ class Entrada(models.Model):
 
     class Meta:
         ordering = ['-creado'] #Ordena los post de más nuevos a más viejos
+        verbose_name = 'Entrada'
+        verbose_name_plural = 'Entradas'
 
     def __str__(self):
         return self.titulo

@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <main class="flex-shrink-0">
-    <div class="container">
-
-        <div class="alert alert-danger" role="alert" style="margin-top: 4em">
-            <form method="post" style="margin-top: 2em">{% csrf_token %}
-                <p><h2>¿Está seguro que quiere eliminar "{{ object }}"?</h2></p>
-                    <br>
-                <p>
-                    {{ form }}
-                    <input type="submit" value="Confirm" class="btn btn-danger">
-                </p>
-            </form>
+    {% if user.is_authenticated %}
+        <div class="container">
+            
+            <div class="alert alert-danger" role="alert" style="margin-top: 4em">
+                <form method="post" style="margin-top: 2em">{% csrf_token %}
+                    <p><h2>¿Está seguro que quiere eliminar "{{ object }}"?</h2></p>
+                        <br>
+                    <p>
+                        {{ form }}
+                        <input type="submit" value="Confirm" class="btn btn-danger">
+                    </p>
+                </form>
+            </div>
         </div>
-    </div>
-        <a type="button" href="{% url 'bienvenida' %}" style="margin-top: 2em; margin-left: 2em;"
-            class="btn btn-sm btn-outline-primary">Volver al inicio</a>
+            <a type="button" href="{% url 'bienvenida' %}" style="margin-top: 2em; margin-left: 2em;"
+                class="btn btn-sm btn-outline-primary">Volver al inicio</a>
+    {% else %} 
+        No tiene permiso para eliminar un posteo. Debe loguearse primero.
+    {% endif %} 
 </main>
 {% endblock %}

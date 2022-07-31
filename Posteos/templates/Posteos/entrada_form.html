@@ -18,11 +18,22 @@
     <div class="container">
 
         <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
-            {{ form.as_p }}
-            {% if request.resolver_match.url_name == "entrada-update" %}
-            <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
-            {% else %}
-            <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">
+            {% if user.is_authenticated %}
+                
+                {{ form.as_p }}
+                    {% if request.resolver_match.url_name == "entrada-update" %}
+                        {% if user.id == post.autor.id %}
+
+                            <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
+                        {% endif %}
+                    {% else %} 
+
+                    <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">
+
+                    {% endif %}
+
+            {% else %} 
+                    No tiene permiso para editar. Debe loguearse primero.
             {% endif %}
         </form>
 

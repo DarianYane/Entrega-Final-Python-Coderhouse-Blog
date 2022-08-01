@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Editar usuario{% endblock %}
+
+    {% block content %} 
+
+<h1>Editar usuario</h1>
+<br/><br/>
+<body>
+   <div class="form-group">
+        <form action="" method="POST">
+
+        
+            {% csrf_token %} 
+
+            {{form.as_p}} 
+
+            <button type="submit"> Editar usuario</button>
+
+        </form>
+    </div>
+</body>
+
+      {% endblock %}

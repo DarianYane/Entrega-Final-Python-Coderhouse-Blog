@@ -8,7 +8,7 @@
     <section class="offset-md-1">
         {% for posteo in posteos %}
             <article style="margin-top: 3em">
-                <h2><a href="{% url 'entrada-detail' posteo.id %}">{{ posteo.titulo }} - {{ posteo.autor.id }}</a></h2>
+                <h2><a href="{% url 'entrada-detail' posteo.id %}">{{ posteo.titulo }} </a></h2>
                 <h4>>> {{ posteo.subtitulo }}</h4>
                 <!--   Oculto el detalle para que se vea en la entrada individual
                 <p>

@@ -4,6 +4,7 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django import forms
 
 
 #Eliminar este de testeos antes de entregar el trabajo
@@ -46,6 +47,7 @@ class EntradaCreateView(CreateView):
     fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
     template_name = "Posteos/entrada_form.html"
     success_url = reverse_lazy("bienvenida")
+    
 
 
 class EntradaUpdateView(UpdateView):

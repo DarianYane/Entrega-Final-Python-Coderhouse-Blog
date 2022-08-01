@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime, date, time
 from ckeditor.fields import RichTextField
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,7 +11,7 @@ class Entrada(models.Model):
     cuerpo = RichTextField()
     imagen = models.URLField()
     # imagen = models.models.ImageField(upload_to="articles", null = True, blank = True)
-    autor = models.CharField(max_length=50)
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
     creado = models.DateField(default=date.today()) #(15 Julio 2022)  # (auto_now_add=True) o (auto_now=True)
 
     class Meta:
@@ -19,6 +20,6 @@ class Entrada(models.Model):
         verbose_name_plural = 'Entradas'
 
     def __str__(self):
-        return self.titulo
+        return self.titulo + str(self.autor)
     
      

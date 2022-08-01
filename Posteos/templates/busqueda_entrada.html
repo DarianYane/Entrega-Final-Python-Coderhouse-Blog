@@ -22,8 +22,12 @@
             <li>
                 <h3>{{entrada.titulo}}</h3>
                 <a href="{% url 'verEntrada' entrada.id %}" class="btn btn-sm btn-block btn-primary">Ver en detalle</a>
-                <a href="{% url 'editarEntrada' entrada.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
-                <a href="{% url 'eliminarEntrada' entrada.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                {% if user.is_authenticated %}
+                    {% if user.id == post.autor.id %}
+                        <a href="{% url 'editarEntrada' entrada.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
+                        <a href="{% url 'eliminarEntrada' entrada.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                    {% endif %}
+                {% endif %}
                 
             </li>
             <br>

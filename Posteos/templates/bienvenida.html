@@ -8,7 +8,7 @@
     <section class="offset-md-1">
         {% for posteo in posteos %}
             <article style="margin-top: 3em">
-                <h2><a href="{% url 'entrada-detail' posteo.id %}">{{ posteo.titulo }}</a></h2>
+                <h2><a href="{% url 'entrada-detail' posteo.id %}">{{ posteo.titulo }} </a></h2>
                 <h4>>> {{ posteo.subtitulo }}</h4>
                 <!--   Oculto el detalle para que se vea en la entrada individual
                 <p>
@@ -31,9 +31,14 @@
                     Fecha de creación: {{ posteo.creado }}
                     <br>
                     <br>
+                    {% if user.is_authenticated %}
                     
-                    <a href="{% url 'entrada-update' posteo.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
-                    <a href="{% url 'entrada-delete' posteo.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                        {% if user.id == posteo.autor.id %}
+                            <a href="{% url 'entrada-update' posteo.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
+                            <a href="{% url 'entrada-delete' posteo.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+                        {% endif %}
+
+                    {% endif %}
                     <br>
                 </footer>
             </article>

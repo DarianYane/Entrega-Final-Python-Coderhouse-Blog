@@ -3,18 +3,21 @@
     {% block content %}
 
         Página para crear posteos
+        {% if user.is_authenticated %}
+            <div>
+                <form action="" method="POST">
+                    {% csrf_token %}
 
-        <div>
-            <form action="" method="POST">
-                {% csrf_token %}
+                    {{form.as_p}}
 
-                {{form.as_p}}
-
-                <input type="submit" value="Guardar" >
+                    <input type="submit" value="Guardar" >
 
 
-            </form>
-        </div>
-    
+                </form>
+            </div>
+        {% else %} 
+            No tiene permiso para crear un posteo. Debe loguearse primero.
+       {% endif %} 
+       
     {% endblock %}
     

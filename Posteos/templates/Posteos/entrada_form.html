@@ -16,25 +16,23 @@
 
 <main class="flex-shrink-0">
     <div class="container">
-
         <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
-            {% if user.is_authenticated %}
+           {% if user.is_authenticated %} 
                 
                 {{ form.as_p }}
                     {% if request.resolver_match.url_name == "entrada-update" %}
-                        {% if user.id == post.autor.id %}
-
-                            <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
-                        {% endif %}
+                                                        
+                           <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
+                        
                     {% else %} 
 
-                    <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">
+                            <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">
 
                     {% endif %}
-
-            {% else %} 
+ 
+             {% else %} 
                     No tiene permiso para editar. Debe loguearse primero.
-            {% endif %}
+             {% endif %}
         </form>
 
     </div>

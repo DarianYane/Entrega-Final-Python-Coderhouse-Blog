@@ -20,7 +20,7 @@ urlpatterns = [
     # Deprecated path('eliminarEntrada/<int:id>', views.eliminarPost, name='eliminarEntrada'),
     
 
-
+# Eliminarlo antes de la entrega final
     path('test/', views.test, name='test'),
 
 ]

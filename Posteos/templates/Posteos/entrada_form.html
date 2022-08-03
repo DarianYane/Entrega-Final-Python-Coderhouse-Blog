@@ -19,7 +19,16 @@
         <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
            {% if user.is_authenticated %} 
                 
-                {{ form.as_p }}
+                <!-- {{ form.as_p }} -->
+                <p>Título: {{ form.titulo }}</p>
+                <p>Subtítulo: {{ form.subtitulo }}</p>
+                <p>Cuerpo: {{ form.cuerpo }}</p>
+                <p>Imagen: {{ form.imagen }}</p>
+                <p>Autor: {{ form.autor }}</p>
+                <p style="visibility:hidden">Fecha de creación: {{ form.creado }}</p>
+                <!-- style="visibility:hidden" -->
+                
+                
                     {% if request.resolver_match.url_name == "entrada-update" %}
                                                         
                            <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">

@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
 
-    <body>
+
+    <header class="site-header sticky-top">
+    
+
         <!-- Navbar -->
         <nav class="navbar navbar-dark navbar-expand-lg p-3" style="background-color: #830FFE;">
+            
             <div class="container-fluid">
                 <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"></div>
 
@@ -44,21 +48,17 @@
                                 {% else %}
                                 <div class="text-end">
                                     <a href="{% url 'login' %}" class="btn me-2" style="background-color: #2AFFF5;">Login</a>
-                                    <a href="{% url 'register' %}" class="btn" style="background-color: #E9ED00;">Registrarse</a>
+                                    <a href="{% url 'register' %}" class="btn me-2" style="background-color: #E9ED00;">Registrarse</a>
                                 </div>
                                 {% endif %}
 
                             </ul>
-                    </div>
-                                        
-                                            
-                                           
-                                            
-                                            
+                    </div>                                         
                                         </div>
                 </div>
             </div>
         </nav>
         <!-- EndNavbar -->
-        </body>
+        
+    </header>
 </html>

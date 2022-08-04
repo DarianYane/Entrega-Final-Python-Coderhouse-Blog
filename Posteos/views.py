@@ -65,3 +65,8 @@ class EntradaDeleteView(DeleteView):
 def quienes_somos(request):
     #posteos = Entrada.objects.all()
     return render(request, "quienes_somos.html")
+
+def como_utilizar_el_blog(request):
+    #posteos = Entrada.objects.all()
+    return render(request, "como_utilizar_el_blog.html")
+

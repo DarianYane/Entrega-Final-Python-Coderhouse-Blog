@@ -1,12 +1,12 @@
 Problemas:
-no me aplica el RichTextField() en el formulario, pero sí en el panel de administracion
-    Solucion
-    Agregar lo del ckeditor en static???
+
 
 
 
 
 Pendientes:
+
+Faltaria borrarlas entradas y poner con lore ipsum, y poner un footer si queremos
 
 
 Al final:

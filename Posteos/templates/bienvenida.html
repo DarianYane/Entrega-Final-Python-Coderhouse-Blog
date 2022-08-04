@@ -15,6 +15,7 @@
 
     <div class="position-relative overflow-hidden p-3 p-md-7 m-md-3 bg-light"></div>
         <div class="col-md-6 p-lg-6 mx-auto my-1">  
+
         {% for posteo in posteos %}
 
             <div class="card border-info mx-auto my-4" style="width: 58rem;">
@@ -22,6 +23,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ posteo.titulo }}</h5>
                     <p class="card-text">{{ posteo.subtitulo }}</p>
+                    <a href="{% url 'entrada-detail' posteo.id %}" class="btn btn-sm btn-block btn-primary">Leer entrada completa</a>
+
                     {% if user.is_authenticated %}
 
                     {% if user.id == posteo.autor.id %}
@@ -30,15 +33,16 @@
                     {% endif %}
 
                     {% endif %}
+
                 </div>
                 <div class="card-footer text-end">
                     <p><h5 class="text-muted">Autor: {{ posteo.autor }}</h5></p>
                     <p><small class="text-muted">Fecha de creación: {{ posteo.creado }}</small></p>
                 </div>
-            </div>    
-        
+            </div>
+        </div>
+    </div>    
+
         {% endfor %}
 
-    
-
-    {% endblock %}
+{% endblock %}

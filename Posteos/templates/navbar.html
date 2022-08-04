@@ -20,13 +20,14 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav mr-auto">
 
-                            <a class="nav-link active" aria-current="page" href="{% url 'bienvenida' %}">Home</a>
+                            <a class="nav-link active mx-2" aria-current="page" href="{% url 'bienvenida' %}">Home</a>
 
                             {% if user.is_authenticated %}
                             <a class="nav-link active" href="{% url 'entrada-create' %}">Crear nueva entrada</a>
                             {% endif %}
                             
-                            <a class="nav-link active" href="#">¿Quiénes somos?</a>
+                            <a class="nav-link active mx-2" href="#">Cómo utilizar el blog</a>
+                            <a class="nav-link active mx-2" href="#">¿Quiénes somos?</a>
 
 
                             <!--{{ formulario_busqueda }}-->

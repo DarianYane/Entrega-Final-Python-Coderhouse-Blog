@@ -15,7 +15,7 @@
 {% block content %}
 
 <main class="flex-shrink-0">
-    <div class="container">
+    <div class="form-group">
         <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
            {% if user.is_authenticated %} 
                 
@@ -24,7 +24,7 @@
                 <p>Subtítulo: {{ form.subtitulo }}</p>
                 <p>Cuerpo: {{ form.cuerpo }}</p>
                 <p>Imagen: {{ form.imagen }}</p>
-                <p>Autor: {{ form.autor }}</p>
+                <p style="visibility:hidden">Autor: {{ form.autor }}</p>
                 <p style="visibility:hidden">Fecha de creación: {{ form.creado }}</p>
                 <!-- style="visibility:hidden" -->
                 
@@ -43,6 +43,13 @@
                     No tiene permiso para editar. Debe loguearse primero.
              {% endif %}
         </form>
+
+        <script>
+            var name = "{{ user.id }}";
+            document.getElementById("elder").value
+            = name;
+
+        </script>
 
     </div>
     <a  type="button" href="{% url 'bienvenida' %}" style="margin-top: 2em; margin-left: 2em;" class="btn btn-sm btn-outline-primary">Volver al

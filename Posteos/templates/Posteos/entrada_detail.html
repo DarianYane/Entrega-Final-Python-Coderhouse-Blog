@@ -30,12 +30,15 @@
     {% if user.is_authenticated %} 
 
         {% if user.id == post.autor.id %}
-            <a href="{% url 'entrada-update' post.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
-            <a href="{% url 'entrada-delete' post.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
+            <a href="{% url 'entrada-update' post.id %}" class="btn btn-block btn-info m-2">Editar</a>
+            <a href="{% url 'entrada-delete' post.id %}" class="btn btn-block btn-danger">Eliminar</a>
         {% endif %}
 
     {% endif %}
     <br>
+    {% include "volver_al_inicio.html" %}
 </section>
+
+
 
 {% endblock %}

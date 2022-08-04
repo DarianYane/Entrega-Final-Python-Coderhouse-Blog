@@ -14,45 +14,85 @@
 
 {% block content %}
 
-<main class="flex-shrink-0">
-    <div class="form-group">
-        <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">{% csrf_token %}
-           {% if user.is_authenticated %} 
+    <div class="position-relative overflow-hidden p-3 p-md-7 m-md-3  bg-light">
+        <div class="col-md-6 p-lg-6 mx-auto my-1">
+
+            {% if request.resolver_match.url_name == "entrada-update" %}
+                                                
+                <h1 class="display-5 fw-normal text-center" >Actualiza los campos que desees, y luego presiona el botón "Actualizar entrada" para modificar la entrada actual</h1>
                 
-                <!-- {{ form.as_p }} -->
-                <p>Título: {{ form.titulo }}</p>
-                <p>Subtítulo: {{ form.subtitulo }}</p>
-                <p>Cuerpo: {{ form.cuerpo }}</p>
-                <p>Imagen: {{ form.imagen }}</p>
-                <p style="visibility:hidden">Autor: {{ form.autor }}</p>
-                <p style="visibility:hidden">Fecha de creación: {{ form.creado }}</p>
-                <!-- style="visibility:hidden" -->
-                
-                
+            {% else %} 
+
+                <h1 class="display-5 fw-normal text-center">Completa todos los campos, y luego presiona el botón "Crear nueva entrada" para generar una nueva entrada</h1>
+
+            {% endif %}
+        
+        <div class="form-group pt-3">
+            <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">
+                {% csrf_token %}
+                {% if user.is_authenticated %} 
+                <div class="mb-3">
+                    <div>
+                        <label for="formGroupExampleInput" class="form-label">Título:</label>
+                    </div>
+                    <div>
+                        {{ form.titulo }}
+                    </div>
+                    <br>
+
+                    <div>
+                        <label for="formGroupExampleInput" class="form-label">Subtítulo:</label>
+                    </div>
+                    <div>
+                        {{ form.subtitulo }}
+                    </div>
+                    <br>
+
+                    
+                    <div>
+                        <label for="formGroupExampleInput" class="form-label">Cuerpo:</label>
+                    </div>
+                    <div>
+                        {{ form.cuerpo }}
+                    </div>
+                    <br>
+
+                    <div>
+                        <label for="formGroupExampleInput" class="form-label">Imagen:</label>
+                        <br>
+                        <label id="emailHelp" class="form-text mb-3">(Inserte la URL de la imagen deseada)</label>
+                    </div>
+                    <div>
+                        {{ form.imagen }}
+                    </div>
+                    
+                </div>
+            
+                <p style="visibility:hidden">Autor: {{ form.autor }} Fecha de creación: {{ form.creado }}</p>
+
                     {% if request.resolver_match.url_name == "entrada-update" %}
                                                         
-                           <input type="submit" value="Actualizar" class="btn btn-sm btn-block btn-warning">
+                        <input type="submit" value="Actualizar antrada" class="btn btn-lg btn-block btn-warning">
                         
                     {% else %} 
 
-                            <input type="submit" value="Crear" class="btn btn-sm btn-block btn-success">
+                        <input type="submit" value="Crear nueva entrada" class="btn btn-lg btn-block btn-success">
 
                     {% endif %}
  
-             {% else %} 
-                    No tiene permiso para editar. Debe loguearse primero.
-             {% endif %}
-        </form>
+                {% else %} 
+                        No tiene permiso para editar. Debe loguearse primero.
+                {% endif %}
+            </form>
 
-        <script>
-            var name = "{{ user.id }}";
-            document.getElementById("elder").value
-            = name;
+            <script>
+                var name = "{{ user.id }}";
+                document.getElementById("elder").value
+                = name;
 
-        </script>
+            </script>
 
-    </div>
-    <a  type="button" href="{% url 'bienvenida' %}" style="margin-top: 2em; margin-left: 2em;" class="btn btn-sm btn-outline-primary">Volver al
-                inicio</a>
-</main>
+
+        {% include "volver_al_inicio.html" %}
+
 {% endblock %}

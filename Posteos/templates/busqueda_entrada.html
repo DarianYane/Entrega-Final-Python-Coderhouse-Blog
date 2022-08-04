@@ -2,37 +2,46 @@
 
 {% block content %}
 
-<p>Resultados para: {{titulo}}</p>
+<div class="position-relative overflow-hidden p-3 p-md-7 m-md-3  bg-light">
+    <div class="col-md-6 p-lg-6 mx-auto my-1">
 
-{% if titulo == "(No realizó búsqueda)" %}
-    Para realizar una búsqueda debe ingresar algún dato.
-    Por favor, inténtelo nuevamente.
+        <h1 class="display-5 fw-normal text-center">Resultados para: "{{titulo}}"</h1>
 
-{% else %}
+        {% if titulo == "(No realizó búsqueda)" %}
+            <div>
+                <br>
+                <br>
+                <h3>Para realizar una búsqueda debe ingresar algún dato.</h3>
+                <br>
+                <h3>Por favor, inténtelo nuevamente.</h3>
+            </div>
 
+        {% else %}
 
-    {% if entradas %}
-        <div>
-            Las entradas econtradas fueron las siguientes:
-            
-        </div>
-        <br>
-        <ul>
-            {% for entrada in entradas %}
-            <li>
-                <h3>{{entrada.titulo}}</h3>
-                <a href="{% url 'entrada-detail' entrada.id %}" class="btn btn-sm btn-block btn-primary">Ver en detalle</a>
-                {% if user.is_authenticated %}
-                    {% if user.id == post.autor.id %}
-                        <a href="{% url 'editarEntrada' entrada.id %}" class="btn btn-sm btn-block btn-info">Editar</a>
-                        <a href="{% url 'eliminarEntrada' entrada.id %}" class="btn btn-sm btn-block btn-danger">Eliminar</a>
-                    {% endif %}
-                {% endif %}
-                
-            </li>
-            <br>
-            {% endfor %}
-        </ul>
+            {% if entradas %}
+                <div>
+                    <br>
+                    <h5>Las entradas econtradas fueron las siguientes:</h5>
+                </div>
+                <br>
+                <ul>
+                    {% for entrada in entradas %}
+                        
+
+                        <div class="list-group">
+                            <a href="{% url 'entrada-detail' entrada.id %}" class="list-group-item list-group-item-action list-group-item-info" aria-current="true">
+                                <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{entrada.titulo}}</h5>
+                                <small>Creada el {{entrada.creado}}</small>
+                                </div>
+                                <p class="mb-1">{{entrada.subtitulo}}</p>
+                                <small>Autor: {{entrada.autor}}</small>
+                            </a>
+                            <br>
+                        </div>
+
+                    {% endfor %}
+                </ul>
 
     {% else %}
 
@@ -44,5 +53,10 @@
     {% endif %}
 
 {% endif %}
+
+
+
+
+        {% include "volver_al_inicio.html" %}
 
 {% endblock %}

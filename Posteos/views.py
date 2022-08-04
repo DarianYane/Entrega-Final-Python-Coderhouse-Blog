@@ -11,7 +11,7 @@ from .forms import EntradaForm
 #Eliminar este de testeos antes de entregar el trabajo
 def test(request):
     #posteos = Entrada.objects.all()
-    return render(request, "entrada_detail.html") #{'posteos': posteos}
+    return render(request, 'test.html')
 
 
 
@@ -62,3 +62,6 @@ class EntradaDeleteView(DeleteView):
     model = Entrada
     success_url = reverse_lazy('bienvenida')
 
+def quienes_somos(request):
+    #posteos = Entrada.objects.all()
+    return render(request, "quienes_somos.html")

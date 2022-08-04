@@ -18,6 +18,8 @@ urlpatterns = [
 
     path('eliminarEntrada/<pk>', EntradaDeleteView.as_view(), name ="entrada-delete" ), #DeleteView
     # Deprecated path('eliminarEntrada/<int:id>', views.eliminarPost, name='eliminarEntrada'),
+
+    path('quienes_somos/', views.quienes_somos, name='quienes_somos'),
     
 
 # Eliminarlo antes de la entrega final

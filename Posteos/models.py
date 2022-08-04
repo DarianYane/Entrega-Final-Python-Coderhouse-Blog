@@ -20,6 +20,6 @@ class Entrada(models.Model):
         verbose_name_plural = 'Entradas'
 
     def __str__(self):
-        return self.titulo + str(self.autor)
+        return self.titulo +" - (Creada por: "+ str(self.autor)+")"
     
      

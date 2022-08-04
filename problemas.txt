@@ -6,7 +6,8 @@ Problemas:
 
 Pendientes:
 
-Faltaria borrarlas entradas y poner con lore ipsum, y poner un footer si queremos
+Faltaria poner entradas con lore ipsum, y poner un footer si queremos
+borrar desde la base algunas entradas que dan error para eliminarlas y quedan feas
 
 
 Al final:

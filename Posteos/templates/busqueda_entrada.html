@@ -2,61 +2,65 @@
 
 {% block content %}
 
-<div class="position-relative overflow-hidden p-3 p-md-7 m-md-3  bg-light">
-    <div class="col-md-6 p-lg-6 mx-auto my-1">
+<body>
+    <div class="position-relative overflow-hidden p-3 p-md-7 m-md-3  bg-light">
+        <div class="col-md-6 p-lg-6 mx-auto my-1">
 
-        <h1 class="display-5 fw-normal text-center">Resultados para: "{{titulo}}"</h1>
+            <h1 class="display-5 fw-normal text-center">Resultados para: "{{titulo}}"</h1>
 
-        {% if titulo == "(No realizó búsqueda)" %}
-            <div>
-                <br>
-                <br>
-                <h3>Para realizar una búsqueda debe ingresar algún dato.</h3>
-                <br>
-                <h3>Por favor, inténtelo nuevamente.</h3>
-            </div>
+            {% if titulo == "(No realizó búsqueda)" %}
+                <div>
+                    <br>
+                    <br>
+                    <h3>Para realizar una búsqueda debe ingresar algún dato.</h3>
+                    <br>
+                    <h3>Por favor, inténtelo nuevamente.</h3>
+                </div>
+
+            {% else %}
+
+                {% if entradas %}
+                    <div>
+                        <br><br>
+                        <h5>Las entradas que coinciden con el criterio de búsqueda fueron las siguientes:</h5>
+                    </div>
+                    <br>
+                    <ul>
+                        {% for entrada in entradas %}
+                            
+
+                            <div class="list-group">
+                                <a href="{% url 'entrada-detail' entrada.id %}" class="list-group-item list-group-item-action list-group-item-info" aria-current="true">
+                                    <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{entrada.titulo}}</h5>
+                                    <small>Creada el {{entrada.creado}}</small>
+                                    </div>
+                                    <p class="mb-1">{{entrada.subtitulo}}</p>
+                                    <small>Autor: {{entrada.autor}}</small>
+                                </a>
+                                <br>
+                            </div>
+
+                        {% endfor %}
+                    </ul>
 
         {% else %}
 
-            {% if entradas %}
-                <div>
-                    <br>
-                    <h5>Las entradas econtradas fueron las siguientes:</h5>
-                </div>
-                <br>
-                <ul>
-                    {% for entrada in entradas %}
-                        
+            <div>
+                No se encontraron coincidencias
+            </div>
 
-                        <div class="list-group">
-                            <a href="{% url 'entrada-detail' entrada.id %}" class="list-group-item list-group-item-action list-group-item-info" aria-current="true">
-                                <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">{{entrada.titulo}}</h5>
-                                <small>Creada el {{entrada.creado}}</small>
-                                </div>
-                                <p class="mb-1">{{entrada.subtitulo}}</p>
-                                <small>Autor: {{entrada.autor}}</small>
-                            </a>
-                            <br>
-                        </div>
 
-                    {% endfor %}
-                </ul>
-
-    {% else %}
-
-        <div>
-            No se encontraron coincidencias
-        </div>
-
+        {% endif %}
 
     {% endif %}
 
-{% endif %}
 
 
+<br><br><br>
+            {% include "volver_al_inicio.html" %}
+            <br>
+</body>
 
-
-        {% include "volver_al_inicio.html" %}
 
 {% endblock %}

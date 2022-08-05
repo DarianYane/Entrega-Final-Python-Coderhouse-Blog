@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 {% block title %}Login {% endblock %}
 
-    {% block content %} 
+{% block content %} 
+<div class="position-relative overflow-hidden p-3 p-md-7 m-md-3  bg-light">
+    <div class="col-md-6 p-lg-6 mx-auto my-1">
+    <h1 class="text-center">Login</h1>
+    <br/><br/>
+    <body>
 
-<h1>Login</h1>
-<br/><br/>
-<body>
+        <form action="" method="POST">
 
-    <form action="" method="POST">
+        
+            {% csrf_token %} 
 
-    
-        {% csrf_token %} 
+            {{form.as_p}} 
 
-        {{form.as_p}} 
+            <button type="submit" class="btn btn-success">Iniciar Sesión</button>
 
-        <button type="submit"> Iniciar Sesión</button>
+        </form>
+    </body>
 
-    </form>
-</body>
+    {% include "volver_al_inicio.html" %}
 
-      {% endblock %}
+{% endblock %}

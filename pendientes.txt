@@ -2,15 +2,6 @@
 Pendientes:
 
 Faltaria poner entradas con lore ipsum
-borrar desde la base algunas entradas que dan error para eliminarlas y quedan feas
+
 hacer el video mostrando el funcionamiento
 hacer los testeos
-hacer el readme
-
-
-
-
-Al final:
-sacar la view TEST
-borrar los comentarios y lo que sepamos que no se usa
-

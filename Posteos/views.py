@@ -8,12 +8,6 @@ from django import forms
 from .forms import EntradaForm
 
 
-#Eliminar este de testeos antes de entregar el trabajo
-def test(request):
-    #posteos = Entrada.objects.all()
-    return render(request, 'test.html')
-
-
 
 def buscar(request):
     if request.GET["titulo"]:
@@ -45,7 +39,6 @@ class EntradaDetailView(DetailView):
 
 class EntradaCreateView(CreateView):
     model = Entrada
-    #fields = ['titulo', 'subtitulo', 'cuerpo', 'imagen', 'autor', 'creado']
     form_class = EntradaForm
     template_name = "Posteos/entrada_form.html"
     success_url = reverse_lazy("bienvenida")
@@ -63,10 +56,8 @@ class EntradaDeleteView(DeleteView):
     success_url = reverse_lazy('bienvenida')
 
 def quienes_somos(request):
-    #posteos = Entrada.objects.all()
     return render(request, "quienes_somos.html")
 
 def como_utilizar_el_blog(request):
-    #posteos = Entrada.objects.all()
     return render(request, "como_utilizar_el_blog.html")
 

@@ -34,20 +34,12 @@ Para instalar las dependencias necesitas correr `pip install`, asegurate que est
 ```
 Esto último traerá un montón de cosas en tu terminal.
 
-`Algunos sistemas operativos requerirán que utilizen pip3 en lugar de pip`
-
-## Será necesario que instales el ckeditor
-
-en windows:
-
-> pip install django-ckeditor
-
-En el archivo setting.py donde dice `'INSTALLED_APPS = [` deberás agregar `'ckeditor'` .
+Algunos sistemas operativos requerirán que utilizen pip3 en lugar de pip
 
 
 ## Configurando la aplicación de Django
 
-Una vez que terminas las de instalar las dependencias, debes correr algunos comandos de django.
+Una vez que terminas instalar las dependencias, debes correr algunos comandos de django.
 
 ### Migraciones
 

@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Entrada(models.Model):
     titulo = models.CharField(max_length=50)
     subtitulo = models.CharField(max_length=100)
-    cuerpo = RichTextField()
+    cuerpo = models.TextField()
     imagen = models.URLField()
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     creado = models.DateTimeField(default=datetime.now().strftime("%d/%m/%Y %H:%M:%S"))

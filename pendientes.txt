@@ -1,7 +1,0 @@
-
-Pendientes:
-
-Faltaria poner entradas con lore ipsum
-
-hacer el video mostrando el funcionamiento
-hacer los testeos

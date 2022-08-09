@@ -2,6 +2,9 @@ from django.urls import path
 from Posteos import views
 from .views import EntradaDetailView, EntradaCreateView, EntradaUpdateView, EntradaDeleteView
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 urlpatterns = [
     path('', views.BienvenidaView.as_view(), name='bienvenida'), # ListView
     path('buscar/', views.buscar, name='buscar'),
@@ -13,3 +16,5 @@ urlpatterns = [
     path('quienes_somos/', views.quienes_somos, name='quienes_somos'),
 
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

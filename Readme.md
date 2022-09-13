@@ -3,7 +3,7 @@
 Este proyecto busca crear un sistema para la administración de artículos y publicaciones.
 Cosas que puedes realizar:
 
-- Crear, leer, actualizar y borrar publicaciones.
+- Crear, leer, actualizar y borrar publicaciones. (CRUD)
 - Crear, modificar y borrar usuarios.
 - Agregar una imagen para cada publicación.
 
@@ -36,10 +36,6 @@ Esto último traerá un montón de cosas en tu terminal.
 
 Algunos sistemas operativos requerirán que utilizen pip3 en lugar de pip
 
-
-## Configurando la aplicación de Django
-
-Una vez que terminas instalar las dependencias, debes correr algunos comandos de django.
 
 ### Migraciones
 
